@@ -12,7 +12,7 @@ class Curso(models.Model):
         return self.nome
 
     class Meta:
-        ordering = ("nome","valor")
+        ordering = ("nome", "valor")
 
 
 class Professor(models.Model):
@@ -28,6 +28,7 @@ class Professor(models.Model):
     def __str__(self):
         return self.nome
 
+
 class Turma(models.Model):
     data_inicio = models.DateField("Data de ínicio")
     data_termino = models.DateField("Data de término")
@@ -37,9 +38,9 @@ class Turma(models.Model):
     professor = models.ForeignKey(Professor, on_delete=models.CASCADE)
 
     def __str__(self):
-        return "%s - %s"%(self.curso.nome,
-                          self.data_inicio.strftime("%d/%m/%Y")
-        )
+        return "%s - %s" % (self.curso.nome,
+                            self.data_inicio.strftime("%d/%m/%Y")
+                            )
 
     class Meta:
-        ordering = ("data_inicio","data_termino")
+        ordering = ("data_inicio", "data_termino")
